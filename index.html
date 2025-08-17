@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Frase Inspiracional</title>
+<style>
+  :root{
+    --bg:#f8fafc; --fg:#0f172a; --border:#e2e8f0;
+    --g1:rgba(96,165,250,.14); /* azul suave */
+    --g2:rgba(34,197,94,.14);  /* verde suave */
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0; background:var(--bg);
+    display:flex; align-items:center; justify-content:center;
+    font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  }
+  .quote-card{
+    display:flex; gap:.6rem; align-items:flex-start;
+    padding:1rem 1.2rem; border:1px solid var(--border);
+    border-radius:14px; background:linear-gradient(135deg,var(--g1),var(--g2));
+    box-shadow:0 10px 28px rgba(15,23,42,.08);
+    max-width:780px;
+    animation:fade .6s ease both;
+  }
+  .emoji{font-size:1.2rem; line-height:1}
+  .text{font-weight:600; color:var(--fg); line-height:1.5; font-size:1.05rem}
+  @keyframes fade { from{opacity:0; transform:translateY(6px)} to{opacity:1; transform:translateY(0)} }
+</style>
+</head>
+<body>
+  <div id="mount"></div>
+
+  <script>
+    (function renderQuote(rootId, text, emoji = "✨"){
+      const root = document.getElementById(rootId);
+      const card = document.createElement("div");
+      card.className = "quote-card";
+
+      const ico = document.createElement("span");
+      ico.className = "emoji";
+      ico.textContent = emoji;
+
+      const t = document.createElement("span");
+      t.className = "text";
+      t.textContent = text;
+
+      card.appendChild(ico);
+      card.appendChild(t);
+      root.appendChild(card);
+    })(
+      "mount",
+      "Resuelve lo de hoy, recupera con calma lo de ayer y confía en que mañana tendrá su momento."
+    );
+  </script>
+</body>
+</html>
